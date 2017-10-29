@@ -24,6 +24,14 @@
                (deposit 200 (fn [] "2017/08/20"))
                (withdraw 300 (fn [] "2017/08/21"))))))
 
+  (testing "should compute balance for account"
+    (is (= 50
+           (-> (create-account)
+               (deposit 100 (fn [] "2017/08/19"))
+               (deposit 200 (fn [] "2017/08/20"))
+               (withdraw 250 (fn [] "2017/08/21"))
+               balance))))
+
   (testing "Print statement for account with multiple transactions"
     (is (= (-> (create-account)
                (deposit 1000 (fn [] "2017/08/18"))
